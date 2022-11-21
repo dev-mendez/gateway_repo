@@ -1,3 +1,5 @@
+import Layout from '../components/layout';
+
 export default function Device() {
-  return <>Device route</>;
+  return <Layout>Device</Layout>;
 }

@@ -1,21 +1,13 @@
-import styles from '../styles/Home.module.css';
+// import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 
 const Footer = () => {
+  const yearNow = new Date().getFullYear();
   return (
     <>
       {' '}
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+      <footer className="text-center mt-5">
+        <p> Powered by An2 Gateway-Control {yearNow}</p>
       </footer>
     </>
   );
