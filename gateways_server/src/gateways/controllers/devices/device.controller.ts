@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 
 import { DeviceService } from '../services/device-rep/device.service';
-import { CreateDeviceDTO } from '../dto/CreateDeviceDTO';
+import { CreateDeviceDTO } from '../../dto/CreateDeviceDTO';
 
 @Controller('device')
 export class DeviceController {

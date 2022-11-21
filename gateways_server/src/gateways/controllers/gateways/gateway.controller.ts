@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 
 import { GatewayService } from '../services/gateway-rep/gateway.service';
-import { CreateGatewayDTO } from '../dto/CreateGatewayDTO';
+import { CreateGatewayDTO } from '../../dto/CreateGatewayDTO';
 
 @Controller('gateway')
 export class GatewayController {
