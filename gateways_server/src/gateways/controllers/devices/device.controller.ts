@@ -19,8 +19,10 @@ export class DeviceController {
   async addDevice(@Body() req: CreateDeviceDTO, @Res() res) {
     try {
       const { idGateway, ...rest } = req;
-      const result = await this.deviceService.addDevice(idGateway, req);
-      res.status(HttpStatus.CREATED).json(result);
+      const nedDevice = await this.deviceService.addDevice(idGateway, req);
+      res
+        .status(HttpStatus.CREATED)
+        .json({ message: 'Device successfully created!', nedDevice });
     } catch (err) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.message);
     }
@@ -32,7 +34,7 @@ export class DeviceController {
       const deletedDevice = await this.deviceService.deleteDevice(<string>id);
       res
         .status(HttpStatus.OK)
-        .json({ mesage: 'Device deleted!', deletedDevice });
+        .json({ mesage: 'Device successfully deleted!', deletedDevice });
     } catch (err) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.message);
     }
