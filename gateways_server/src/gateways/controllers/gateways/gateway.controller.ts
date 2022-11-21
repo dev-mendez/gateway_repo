@@ -11,7 +11,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 
-import { GatewayService } from '../services/gateway-rep/gateway.service';
+import { GatewayService } from '../../services/gateway/gateway.service';
 import { CreateGatewayDTO } from '../../dto/CreateGatewayDTO';
 
 @Controller('gateway')
