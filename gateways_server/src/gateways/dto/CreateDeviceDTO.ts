@@ -1,4 +1,4 @@
-import { GatewayMaxDevices } from './custom-validations/max-devices';
+import { GatewayMaxDevices } from './custom-validations/maxNumDevices';
 import { IsNotEmpty, Validate } from 'class-validator';
 
 export class CreateDeviceDTO {

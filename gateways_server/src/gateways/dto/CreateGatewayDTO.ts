@@ -1,4 +1,4 @@
-import { GateWayIsUnique } from './custom-validations/serial-number';
+import { GateWayIsUnique } from './custom-validations/uniqSerialGatewayNumber';
 import { IsNotEmpty, Matches, Validate } from 'class-validator';
 
 export class CreateGatewayDTO {
