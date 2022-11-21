@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GatewayController } from './gateway.controller';
 
-describe('GatewaysController', () => {
+describe('GatewayController', () => {
   let controller: GatewayController;
 
   beforeEach(async () => {
