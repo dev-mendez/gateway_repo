@@ -9,6 +9,7 @@ export default function Layout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Gateway app" />
         <link rel="icon" href="/favicon.ico" />
+        <meta charset="utf-8"></meta>
         <title>Gateway app</title>
       </Head>
 
