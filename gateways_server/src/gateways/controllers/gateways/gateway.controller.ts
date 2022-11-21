@@ -64,26 +64,27 @@ export class GatewayController {
     }
   }
 
-  @Put('/update/:id')
-  async updateGateway(
-    @Body() createGatewayDTO: CreateGatewayDTO,
-    @Res() res,
-    @Param('id') id: string,
-  ) {
-    try {
-      const updatedGateway = await this.gatewayService.updateGateway(
-        <string>id,
-        <CreateGatewayDTO>createGatewayDTO,
-      );
+  
+  // @Put('/update/:id')
+  // async updateGateway(
+  //   @Body() createGatewayDTO: CreateGatewayDTO,
+  //   @Res() res,
+  //   @Param('id') id: string,
+  // ) {
+  //   try {
+  //     const updatedGateway = await this.gatewayService.updateGateway(
+  //       <string>id,
+  //       <CreateGatewayDTO>createGatewayDTO,
+  //     );
 
-      return res.status(HttpStatus.OK).json({
-        message: 'Gateway successfully updated! :)',
-        updatedGateway,
-      });
-    } catch (err) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.message);
-    }
-  }
+  //     return res.status(HttpStatus.OK).json({
+  //       message: 'Gateway successfully updated! :)',
+  //       updatedGateway,
+  //     });
+  //   } catch (err) {
+  //     res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+  //   }
+  // }
 
   @Delete('/delete/:id')
   async deleteGateway(@Res() res, @Param('id') id: string) {
@@ -91,10 +92,12 @@ export class GatewayController {
       const gatewayDeleted = await this.gatewayService.deleteGateway(
         <string>id,
       );
-      if (!gatewayDeleted)
+      if (!gatewayDeleted) {
+        res.status(HttpStatus.NOT_FOUND).send();
         throw new NotFoundException(
-          'The gateway you are looking for is not available :(',
+          'The gateway you are looking for is not there :(',
         );
+      }
 
       return res.status(HttpStatus.OK).json({
         message: 'Gateway successfully deleted!',
