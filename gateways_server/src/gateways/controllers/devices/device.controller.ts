@@ -19,10 +19,10 @@ export class DeviceController {
   async addDevice(@Body() req: CreateDeviceDTO, @Res() res) {
     try {
       const { idGateway, ...rest } = req;
-      const nedDevice = await this.deviceService.addDevice(idGateway, req);
+      const newDevice = await this.deviceService.addDevice(idGateway, req);
       res
         .status(HttpStatus.CREATED)
-        .json({ message: 'Device successfully created!', nedDevice });
+        .json({ message: 'Device successfully created!', newDevice });
     } catch (err) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.message);
     }
