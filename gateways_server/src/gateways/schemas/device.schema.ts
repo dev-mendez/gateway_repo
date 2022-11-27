@@ -15,7 +15,7 @@ export class Device {
   createAt: Date;
 
   @Prop({ required: true })
-  status: string;
+  status: Boolean;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,

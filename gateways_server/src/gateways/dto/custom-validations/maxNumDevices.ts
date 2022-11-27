@@ -13,7 +13,7 @@ export class GatewayMaxDevices implements ValidatorConstraintInterface {
 
   async validate(idGateWay: string) {
     const numberDevice = await this.gatewayService.getNumberDevice(idGateWay);
-    return numberDevice <= 10;
+    return numberDevice <= 9;
   }
 
   defaultMessage(_) {

@@ -11,7 +11,7 @@ export class CreateDeviceDTO {
   createAt: Date;
 
   @IsNotEmpty()
-  status: string;
+  status: Boolean;
 
   @Validate(GatewayMaxDevices)
   idGateway: string;
