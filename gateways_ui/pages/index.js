@@ -1,10 +1,21 @@
-import Layout from '../components/layout';
-export default function Home() {
+import GatewayList from '../components/gateway/gateway-list';
+import Layout from '../components/ui/app-layout';
+
+function Gateway(gatewayProps) {
   return (
-    <>
-      <Layout>
-        <h1 className="text-bold text-center">Gateways home</h1>
-      </Layout>
-    </>
+    <Layout>
+      <main>
+        <GatewayList props={gatewayProps} />
+      </main>
+    </Layout>
   );
 }
+
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:3000/gateway`);
+  const data = await res.json();
+
+  return { props: { data } };
+}
+
+export default Gateway;
