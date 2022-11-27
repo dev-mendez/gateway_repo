@@ -88,7 +88,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0, ml: 'auto' }}>
             <Tooltip title="Navigate to gateway list">
               <Link href="/">
-                <Button color="inherit" variant="text">
+                <Button color="inherit" variant="outlined">
                   {' '}
                   Gateway list
                 </Button>
