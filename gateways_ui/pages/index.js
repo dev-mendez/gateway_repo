@@ -1,11 +1,11 @@
 import GatewayList from '../components/gateway/gateway-list';
 import Layout from '../components/ui/app-layout';
 
-function Gateway(gatewayProps) {
+function Gateway(props) {
   return (
     <Layout>
       <main>
-        <GatewayList props={gatewayProps} />
+        <GatewayList gateways={props.gateways} />
       </main>
     </Layout>
   );
@@ -14,8 +14,8 @@ function Gateway(gatewayProps) {
 export async function getServerSideProps() {
   const res = await fetch(`http://localhost:3000/gateway`);
   const data = await res.json();
-
-  return { props: { data } };
+  console.log(data);
+  return { props: { gateways: data.gateways } };
 }
 
 export default Gateway;

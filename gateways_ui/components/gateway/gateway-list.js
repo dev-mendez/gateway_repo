@@ -6,8 +6,9 @@ import AddGatewayForm from './add-gateway-form';
 import { useState } from 'react';
 import EmptyListMessage from '../ui/common/empty-list-message';
 
-function GatewayList({ props }) {
-  const [gateways, setGateway] = useState(props.data.gateways);
+function GatewayList({ gateways: gatewayList }) {
+  
+  const [gateways, setGateway] = useState(gatewayList);
 
   const callBackGateway = (gateway) => {
     setGateway([gateway.newGateway, ...gateways]);

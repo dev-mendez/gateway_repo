@@ -16,6 +16,7 @@ function GatewayItem(props) {
   const { _id, serialNumber, name, ipV4 } = props;
   return (
     <ListItem
+      data-testid={_id}
       sx={{
         width: '100%',
         my: 2,
