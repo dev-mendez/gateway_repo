@@ -88,6 +88,7 @@ const AddGatewayForm = ({ callBackGateway }) => {
   return (
     <>
       <Button
+        data-testid="button-create-gateway"
         onClick={handleOpen}
         color="primary"
         variant="outlined"
@@ -96,6 +97,7 @@ const AddGatewayForm = ({ callBackGateway }) => {
         Add Gateway
       </Button>
       <Modal
+        data-testid="modal-create-gateway"
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
