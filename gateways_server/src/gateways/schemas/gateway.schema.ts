@@ -17,6 +17,9 @@ export class GateWay {
 
   @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'Device' }])
   devices: [DeviceDocument];
+  
+  @Prop({ default: false })
+  isDeleted: Boolean;
 }
 
 export const GateWaySchema = SchemaFactory.createForClass(GateWay);

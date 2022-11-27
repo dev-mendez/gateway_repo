@@ -30,8 +30,9 @@ export class DeviceService {
 
   async deleteDevice(idDevice: string): Promise<Device> {
     try {
-      const device = await this.deviceModel.findById(idDevice);
-      const deletedDevice = await device.remove();
+      const deletedDevice = await this.deviceModel.findByIdAndUpdate(idDevice, {
+        isDeleted: true,
+      });
       return deletedDevice;
     } catch (e) {
       this.logger.error(e);

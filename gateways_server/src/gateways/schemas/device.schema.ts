@@ -21,6 +21,9 @@ export class Device {
     type: mongoose.Schema.Types.ObjectId,
   })
   idGateway: string;
+
+  @Prop({ default: false })
+  isDeleted: Boolean;
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(Device);

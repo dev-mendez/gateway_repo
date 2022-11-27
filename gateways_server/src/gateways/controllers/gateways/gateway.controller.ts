@@ -50,12 +50,16 @@ export class GatewayController {
   async getGateway(@Res() res, @Param('id') id: string) {
     try {
       const gateway = await this.gatewayService.getGateway(<string>id);
-
-      if (!gateway)
-        throw new NotFoundException(
-          'The gateway you are looking for is not there!',
-        );
-
+      if (!gateway) {
+        return res.status(HttpStatus.NOT_FOUND).json({
+          message: 'Gateway not found! :',
+        });
+      }
+      if (gateway.isDeleted) {
+        return res.status(HttpStatus.NOT_FOUND).json({
+          message: 'Gateway not found! :',
+        });
+      }
       return res.status(HttpStatus.OK).json({
         gateway,
       });
@@ -64,7 +68,6 @@ export class GatewayController {
     }
   }
 
-  
   // @Put('/update/:id')
   // async updateGateway(
   //   @Body() createGatewayDTO: CreateGatewayDTO,
@@ -92,13 +95,11 @@ export class GatewayController {
       const gatewayDeleted = await this.gatewayService.deleteGateway(
         <string>id,
       );
-      if (!gatewayDeleted) {
-        res.status(HttpStatus.NOT_FOUND).send();
-        throw new NotFoundException(
-          'The gateway you are looking for is not there :(',
-        );
+      if (gatewayDeleted.isDeleted) {
+        return res.status(HttpStatus.NOT_FOUND).json({
+          message: 'Gateway is already deleted! :',
+        });
       }
-
       return res.status(HttpStatus.OK).json({
         message: 'Gateway successfully deleted!',
         gatewayDeleted,

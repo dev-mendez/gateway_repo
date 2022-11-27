@@ -6,4 +6,5 @@ export interface Gateway extends Document {
   readonly name: string;
   readonly ipV4: string;
   readonly devices: Array<CreateDeviceDTO>;
+  readonly isDeleted: Boolean;
 }

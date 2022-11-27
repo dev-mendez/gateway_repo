@@ -11,14 +11,22 @@ export class GatewayService {
   ) {}
 
   async getGateways(): Promise<Gateway[]> {
-    const allGateways = await this.gatewayModel.find();
+    const allGateways = await this.gatewayModel
+      .find({
+        isDeleted: false,
+      })
+      .populate({
+        path: 'devices',
+        match: { isDeleted: false },
+      });
     return allGateways;
   }
 
   async getGateway(id: string): Promise<Gateway> {
-    const selectedGateway = await this.gatewayModel
-      .findById(id)
-      .populate('devices');
+    const selectedGateway = await this.gatewayModel.findById(id).populate({
+      path: 'devices',
+      match: { isDeleted: false },
+    });
     return selectedGateway;
   }
 
@@ -28,7 +36,12 @@ export class GatewayService {
   }
 
   async deleteGateway(id: string): Promise<Gateway> {
-    const deleteGateway = await this.gatewayModel.findByIdAndDelete(id);
+    const deleteGateway = await this.gatewayModel
+      .findByIdAndUpdate(id, { isDeleted: true })
+      .populate({
+        path: 'devices',
+        match: { isDeleted: false },
+      });
     return deleteGateway;
   }
 
@@ -36,31 +49,41 @@ export class GatewayService {
     id: string,
     createProductDTO: CreateGatewayDTO,
   ): Promise<Gateway> {
-    const updatedGateway = this.gatewayModel.findByIdAndUpdate(
-      id,
-      createProductDTO,
-      { new: true },
-    );
+    const updatedGateway = this.gatewayModel
+      .findByIdAndUpdate(id, createProductDTO, { new: true })
+      .populate({
+        path: 'devices',
+        match: { isDeleted: false },
+      });
     return updatedGateway;
   }
 
   async findById(idGateWay): Promise<Gateway> {
-    const foundGateway = await this.gatewayModel
-      .findById(idGateWay)
-      .populate('devices');
+    const foundGateway = await this.gatewayModel.findById(idGateWay).populate({
+      path: 'devices',
+      match: { isDeleted: false },
+    });
     return foundGateway;
   }
 
   async getNumberDevice(idGateWay): Promise<number> {
-    const gateway = await this.gatewayModel.findById(idGateWay);
+    const gateway = await this.gatewayModel.findById(idGateWay).populate({
+      path: 'devices',
+      match: { isDeleted: false },
+    });
     if (gateway) return gateway.devices.length;
     return 0;
   }
 
   async findBySN(serialNumber): Promise<Gateway> {
-    const gatewayBySerialNumber = await this.gatewayModel.findOne({
-      serialNumber,
-    });
+    const gatewayBySerialNumber = await this.gatewayModel
+      .findOne({
+        serialNumber,
+      })
+      .populate({
+        path: 'devices',
+        match: { isDeleted: false },
+      });
     return gatewayBySerialNumber;
   }
 }
