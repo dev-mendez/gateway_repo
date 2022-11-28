@@ -1,4 +1,4 @@
-import { screen, waitFor, fireEvent } from '@testing-library/react';
+import { screen, waitFor, fireEvent, getByText } from '@testing-library/react';
 import GatewayList from '../gateway-list';
 import '@testing-library/jest-dom';
 import { customRender } from '../../../test-utils';
@@ -21,25 +21,32 @@ const gateways = [
 ];
 
 describe('<GatewayList>', () => {
-  it('should render all gateways', async () => {
-    const component = customRender(<GatewayList gateways={gateways} />);
-
+  it('should render all gateways', () => {
     waitFor(() => {
       gateways.forEach((gateway) => {
-        expect(component.queryByTestId(gateways._id)).toBeInTheDocument();
+        expect(
+          GatewayListComponent.queryByTestId(gateways._id)
+        ).toBeInTheDocument();
       });
     });
   });
 
-  it('should open modal create gateway', async () => {
+  it('the modal should be visible', () => {
     const component = customRender(<GatewayList gateways={gateways} />);
     const createButton = component.getByTestId('button-create-gateway');
+
+    fireEvent.click(createButton);
+    component.queryByTestId('modal-create-gateway').focus();
+  });
+
+  it('should exist in the modal three inputs and one submit buttom', () => {
+    const component = customRender(<GatewayList gateways={gateways} />);
+    const createButton = component.getByTestId('button-create-gateway');
+
     fireEvent.click(createButton);
 
-    waitFor(() => {
-      expect(
-        component.queryByTestId('modal-create-gateway')
-      ).toBeInTheDocument();
-    });
+    console.debug(createButton);
+
+    //time over... :( 
   });
 });

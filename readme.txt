@@ -1,4 +1,4 @@
-# Gateway 
+# Gateway app
 
 
 
@@ -9,32 +9,24 @@ These are requirements to run the app in local machine.
 You will need to install the following:
 
 - Nodejs
-  ```
   https://nodejs.org/en/download/
-  ```
+  
 - Mongodb
-
-  ```
   https://docs.mongodb.com/manual/installation/
   ```
 
 
 Install requirements
+Use npm install on the root of both folder, gateway_ui and gateway_server to install dependencies.
 
-```
-npm install
-```
-
-```
 Enviroment
-
-To create .env, please use  envsample content and change for your own variable values
+To create .env, please change as you wish the variables from env file on the server side.
 ```
 
 Run the app
 
 ```
-npm run start
+npm next start for nextJS  ui,  npm start for nestJS server.
 ```
 
 Run the app tests
@@ -43,14 +35,3 @@ Run the app tests
 npm run test
 ```
 
-Run fixtures to populate the DB with initial data
-
-```
-npm run fixtures
-```
-
-Run fixtures and start the app
-
-```
-npm run fixtures:start
-```
