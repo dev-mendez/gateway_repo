@@ -122,6 +122,7 @@ const AddGatewayForm = ({ callBackGateway }) => {
               <TextField
                 sx={{ mt: 2 }}
                 fullWidth
+                data-testid="serial-number"
                 id="serialNumber"
                 name="serialNumber"
                 label="Enter serial number"
@@ -138,6 +139,7 @@ const AddGatewayForm = ({ callBackGateway }) => {
               <TextField
                 sx={{ mt: 2 }}
                 fullWidth
+                data-testid="gateway-name"
                 id="name"
                 name="name"
                 label="Enter gateway name"
@@ -150,6 +152,7 @@ const AddGatewayForm = ({ callBackGateway }) => {
               <TextField
                 sx={{ my: 2 }}
                 fullWidth
+                data-testid="gateway-ipV4"
                 id="ipV4"
                 name="ipV4"
                 label="Enter a valid IPv4 address"

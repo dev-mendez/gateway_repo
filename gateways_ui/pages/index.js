@@ -14,7 +14,6 @@ function Gateway(props) {
 export async function getServerSideProps() {
   const res = await fetch(`http://localhost:3000/gateway`);
   const data = await res.json();
-  console.log(data);
   return { props: { gateways: data.gateways } };
 }
 
