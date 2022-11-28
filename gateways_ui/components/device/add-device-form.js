@@ -15,6 +15,8 @@ import { useSnackbar } from 'notistack';
 
 import Stack from '@mui/material/Stack';
 
+const URI = process.env.NEXT_PUBLIC_URI;
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -52,7 +54,7 @@ const AddDeviceForm = ({ callBack_AddDevice }) => {
 
       try {
         const response = await axios({
-          url: 'http://localhost:3000/device',
+          url: `${URI}/device`,
           method: 'POST',
           data: values,
         });
