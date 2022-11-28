@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 
 import { useSnackbar } from 'notistack';
 
+const URI = process.env.NEXT_PUBLIC_URI;
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -63,7 +65,7 @@ const AddGatewayForm = ({ callBackGateway }) => {
     onSubmit: async (values) => {
       try {
         const response = await axios({
-          url: 'http://localhost:3000/gateway/create',
+          url: `${URI}/gateway/create`,
           method: 'POST',
           data: values,
         });
@@ -73,7 +75,6 @@ const AddGatewayForm = ({ callBackGateway }) => {
           variant: 'info',
         });
         formik.resetForm();
-        console.log(response.data.message);
       } catch (error) {
         const message = Object.values(
           error.response.data.message[0].constraints

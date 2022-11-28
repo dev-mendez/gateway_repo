@@ -12,6 +12,8 @@ import axios from 'axios';
 
 import { useSnackbar } from 'notistack';
 
+const URI = process.env.NEXT_PUBLIC_URI;
+
 function DeviceItems(props) {
   let _status = '';
   let _createAt = '';
@@ -23,7 +25,7 @@ function DeviceItems(props) {
   const handleDelete = async () => {
     try {
       const response = await axios({
-        url: `http://localhost:3000/device/${_id}`,
+        url: `${URI}/device/${_id}`,
         method: 'DELETE',
       });
       callBack_DelDevice(response.data);
